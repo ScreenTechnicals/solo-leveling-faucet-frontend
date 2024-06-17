@@ -3,17 +3,9 @@ import { wagmiClient } from "@/configs";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { Address, getAddress } from "viem";
-import {
-  useAccount,
-  useWaitForTransactionReceipt,
-  useWriteContract,
-} from "wagmi";
+import { useWaitForTransactionReceipt, useWriteContract } from "wagmi";
 
 export const useRequestTokens = () => {
-  const { address, isConnected } = useAccount({
-    config: wagmiClient,
-  });
-
   const { writeContract, data: hash } = useWriteContract({
     config: wagmiClient,
   });
@@ -37,7 +29,7 @@ export const useRequestTokens = () => {
       },
       {
         onSuccess: () => {
-          toast.loading("Todo Created! Waiting for confirmation.", {
+          toast.loading("Processing Please Wait!", {
             id: "loading1",
           });
           setIsSending(false);
@@ -59,7 +51,5 @@ export const useRequestTokens = () => {
     confirming,
     isConfirming,
     isConfirmed,
-    isConnected,
-    address,
   };
 };
