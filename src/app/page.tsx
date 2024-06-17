@@ -29,7 +29,7 @@ export default function Home() {
       setAddress(walletAddress);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [address, isConnected]);
+  }, [walletAddress, isConnected]);
 
   useEffect(() => {
     if (isConfirmed) {
